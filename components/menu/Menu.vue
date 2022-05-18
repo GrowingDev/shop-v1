@@ -2,25 +2,40 @@
   <transition name="slide-fade">
     <div id="menu" class="bg-black/75 z-9" @mouseleave="closeMenu">
       <div id="menu-list">
-        <nuxt-link class="menu-link  md:text-md p-4 pl-4 lg:pl-8 uppercase" to="/">
+        <button
+          @click="showHome"
+          class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
+        >
           Home
-        </nuxt-link>
+        </button>
         <navigation-group-opener
           title="kollektionen"
           :btn-handler="showNavigationGroup"
         />
-           <nuxt-link class="menu-link  md:text-md p-4 pl-4 lg:pl-8 uppercase" to="/product/10000">
+        <button
+          @click="() => showCreator()"
+          class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
+        >
           creator
-        </nuxt-link>
-        <nuxt-link class="menu-link  md:text-md p-4 pl-4 lg:pl-8 uppercase" to="/">
+        </button>
+        <button
+          @click="() => closeMenu()"
+          class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
+        >
           die marke
-        </nuxt-link>
-        <nuxt-link class="menu-link  md:text-md p-4 pl-4 lg:pl-8 uppercase" to="/">
+        </button>
+        <button
+          @click="() => closeMenu()"
+          class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
+        >
           faq
-        </nuxt-link>
-        <nuxt-link class="menu-link  md:text-md p-4 pl-4 lg:pl-8 uppercase" to="/">
+        </button>
+        <button
+          @click="() => closeMenu()"
+          class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
+        >
           kontakt
-        </nuxt-link>
+        </button>
       </div>
       <transition name="slide-fade">
         <accessoires-sub-navigation
@@ -51,10 +66,15 @@ export default {
         console.log('test')
       },
     },
+    toogleMenu: {
+      type: Boolean,
+      required: false,
+    },
   },
   data() {
     return {
       show: false,
+      closed: false,
       selectedNavigationGroup: String,
       collectionGroup: [
         {
@@ -72,8 +92,23 @@ export default {
     },
     closeMenu() {
       if (!this.show) {
-        this.showNav()
+        if (!this.closed) {
+          this.showNav()
+          this.closed = true
+        }
       }
+    },
+    showCreator() {
+      this.closeMenu()
+      this.$router.push({
+        path: '/product/10000',
+      })
+    },
+    showHome() {
+      this.closeMenu()
+      this.$router.push({
+        path: '/',
+      })
     },
   },
 }
@@ -86,7 +121,7 @@ export default {
 }
 .menu-link:hover {
   background: white;
-  color: #1C1C1C;
+  color: #1c1c1c;
 }
 #menu {
   position: fixed;

@@ -27,7 +27,7 @@ export default {
   methods: {
     openMenu() {
       this.toogleMenu = !this.toogleMenu;
-
+    console.log(this.toogleMenu)
     },
   },
 }
