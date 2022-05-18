@@ -46,7 +46,9 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxt/postcss8',
   ],
-
+  generate: {
+    fallback: true
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
   env: {
