@@ -141,6 +141,7 @@ export default {
     }
   },
   methods: {
+
     onFileChange(e) {
       let item
       if (this.front) {

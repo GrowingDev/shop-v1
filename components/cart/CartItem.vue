@@ -27,7 +27,7 @@
       <img
         v-else
         class="cart-item-furniture"
-        :src="`http://localhost:4000/images/10000-front.png`"
+        :src="require(`~/assets/images/product-page/clip_raw.png`)"
         alt="logo"
       />
     </div>
@@ -41,7 +41,7 @@
       <img
         v-else
         class="cart-item-furniture"
-        :src="`http://localhost:4000/images/10000-back.png`"
+        :src="require(`~/assets/images/product-page/clip_raw-back.png`)"
         alt="logo"
       />
     </div>

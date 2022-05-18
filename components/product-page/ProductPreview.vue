@@ -24,13 +24,13 @@
             <div class="flip__box__front">
               <img
                 class="furniture__img"
-                src="http://localhost:4000/images/10001-front.png"
+                src="http://api.andreasbenz.org/images/10001-front.png"
               />
             </div>
             <div class="flip__box__back">
               <img
                 class="furniture__img"
-                src="http://localhost:4000/images/10001-back.png"
+                src="http://api.andreasbenz.org/images/10001-back.png"
               />
             </div>
           </div>

@@ -44,7 +44,8 @@ export default {
     collections: [],
   }),
   async fetch() {
-    this.collections = await fetch('http://localhost:4000/collection/').then(
+
+    this.collections = await fetch('http://api.andreasbenz.org/collection/').then(
       (res) => res.json()
     )
   },

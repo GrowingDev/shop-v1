@@ -20,10 +20,11 @@ export default {
   },
   data: () => ({
     mouse: null,
+
   }),
   async fetch() {
     let products = await fetch(
-      'http://localhost:4000/product/filter/' + this.$route.params.id
+      'http://api.andreasbenz.org/product/filter/' + this.$route.params.id
     ).then((res) => res.json())
 
     this.$store.commit('setCollection', products)

@@ -61,7 +61,7 @@ export default {
 
   async fetch() {
     let product = await fetch(
-      'http://localhost:4000/product/' + this.$route.params.id
+      'http://api.andreasbenz.org/product/' + this.$route.params.id
     ).then((res) => res.json())
     this.$store.commit('setProduct', product)
   },
