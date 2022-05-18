@@ -4,7 +4,7 @@
       v-for="(image, i) in productImages"
       :key="i"
       class="thumbnail"
-      :src="`http://localhost:4000/images/${image.url}.png`"
+      :src="`https://api.andreasbenz.org/images/${image.url}.png`"
       :a="image.title"
       :alt="image.imageAlt"
       :class="{ selectedThumbnail: i == selected }"
