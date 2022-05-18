@@ -24,7 +24,7 @@ export default {
   }),
   async fetch() {
     let products = await fetch(
-      'http://api.andreasbenz.org/product/filter/' + this.$route.params.id
+      'https://api.andreasbenz.org/product/filter/' + this.$route.params.id
     ).then((res) => res.json())
 
     this.$store.commit('setCollection', products)

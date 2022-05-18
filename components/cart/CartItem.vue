@@ -21,7 +21,7 @@
       <img
         v-if="item.productId !== '10000'"
         class="cart-item-furniture"
-        :src="`http://localhost:4000/images/10001-front.png`"
+        :src="`https://localhost:4000/images/10001-front.png`"
         alt="logo"
       />
       <img
@@ -35,7 +35,7 @@
       <img
         v-if="item.productId !== '10000'"
         class="cart-item-furniture"
-        :src="`http://localhost:4000/images/10001-back.png`"
+        :src="`https://localhost:4000/images/10001-back.png`"
         alt="logo"
       />
       <img
