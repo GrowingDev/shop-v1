@@ -2,11 +2,10 @@
   <div id="navigation-group-page" class="bg-black/90" @mouseleave="closeMenu">
     <div id="navigation-group-container">
       <button
-        @click="closeMenu"
+        @click="showCollection(item.title)"
         v-for="item in collections"
         :key="item.id"
         class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
-
       >
         <a>{{ item.title }}</a>
       </button>
@@ -74,6 +73,12 @@ export default {
     },
   },
   methods: {
+    showCollection(title) {
+      this.showNav()
+      this.$router.push({
+        path: '/collection/' + title,
+      })
+    },
     closeMenu() {
       this.showNav()
     },
