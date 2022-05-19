@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <div id="menu" class="bg-black/75 z-9" @mouseleave="closeMenu">
+    <div id="menu" class="bg-black/75 z-9" >
       <div id="menu-list">
         <button
           @click="showHome"
