@@ -88,7 +88,7 @@
       id="btn-upload"
       ref="uploadImg"
       type="file"
-      accept="image/x"
+      accept="image/*"
       @change="onFileChange($event)"
     />
 
