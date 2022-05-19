@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <div id="menu" class="bg-black/75 z-9" @mouseleave="closeMenu">
+    <div id="menu" class="bg-black/75 z-9" @mouseleave="closeMenu" >
       <div id="menu-list">
         <button
           @click="showHome"
@@ -11,6 +11,7 @@
         <navigation-group-opener
           title="kollektionen"
           :btn-handler="showNavigationGroup"
+
         />
         <button
           @click="() => showCreator()"
@@ -87,8 +88,9 @@ export default {
 
   methods: {
     showNavigationGroup(group) {
-      this.selectedNavigationGroup = group
-      this.show = !this.show
+      this.selectedNavigationGroup = group;
+      this.show = !this.show;
+
     },
     closeMenu() {
       if (!this.show) {

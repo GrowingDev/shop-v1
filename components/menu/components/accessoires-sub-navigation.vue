@@ -1,14 +1,15 @@
 <template>
   <div id="navigation-group-page" class="bg-black/90" @mouseleave="closeMenu">
     <div id="navigation-group-container">
-      <nuxt-link
+      <button
+        @click="closeMenu"
         v-for="item in collections"
         :key="item.id"
-        class="menu-link md:text-md p-4 pl-8 uppercase"
-        :to="`/collection/${item.title}`"
+        class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
+
       >
-        <a @click="showNav">{{ item.title }}</a>
-      </nuxt-link>
+        <a>{{ item.title }}</a>
+      </button>
     </div>
     <button
       class="
@@ -44,10 +45,19 @@ export default {
     collections: [],
   }),
   async fetch() {
-
-    this.collections = await fetch('https://api.andreasbenz.org/collection/').then(
-      (res) => res.json()
-    )
+    this.collections = [
+      {
+        id: '10001',
+        title: 'Firefighter',
+      },
+      {
+        id: '10002',
+        title: 'Maritim',
+      },
+    ]
+    //  this.collections = await fetch('https://api.andreasbenz.org/collection/').then(
+    //  (res) => res.json()
+    //)
   },
 
   props: {
@@ -65,9 +75,7 @@ export default {
   },
   methods: {
     closeMenu() {
-      if (!this.show) {
-        this.showNav()
-      }
+      this.showNav()
     },
   },
 }
