@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <div id="menu" class="bg-black/75 z-9" @mouseleave="closeMenu" >
+    <div id="menu" class="bg-black/75 z-9" @mouseleave="closeMenu">
       <div id="menu-list">
         <button
           @click="showHome"
@@ -11,28 +11,24 @@
         <navigation-group-opener
           title="kollektionen"
           :btn-handler="showNavigationGroup"
-
         />
         <button
-          @click="() => showCreator()"
+        @click="showCreator"
           class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
         >
           creator
         </button>
         <button
-          @click="() => closeMenu()"
           class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
         >
           die marke
         </button>
         <button
-          @click="() => closeMenu()"
           class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
         >
           faq
         </button>
         <button
-          @click="() => closeMenu()"
           class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
         >
           kontakt
@@ -40,10 +36,8 @@
       </div>
       <transition name="slide-fade">
         <accessoires-sub-navigation
-          v-if="show"
-          :btn-handler="showNavigationGroup"
-          :navigation-group="'kollektion'"
-          :show-nav="showNav"
+          v-if="subMenu"
+          :toogleSubMenu="showNavigationGroup"
         />
       </transition>
     </div>
@@ -59,46 +53,19 @@ export default {
     NavigationGroupOpener,
     AccessoiresSubNavigation,
   },
-  props: {
-    showNav: {
-      type: Function,
-      required: true,
-      default: () => {
-        console.log('test')
-      },
-    },
-    toogleMenu: {
-      type: Boolean,
-      required: false,
-    },
-  },
+
   data() {
     return {
-      show: false,
-      closed: false,
-      selectedNavigationGroup: String,
-      collectionGroup: [
-        {
-          title: 'Firefighter',
-          link: 'collection',
-        },
-      ],
+      subMenu: false,
     }
   },
 
   methods: {
-    showNavigationGroup(group) {
-      this.selectedNavigationGroup = group;
-      this.show = !this.show;
-
+    showNavigationGroup() {
+      this.subMenu = !this.subMenu
     },
     closeMenu() {
-      if (!this.show) {
-        if (!this.closed) {
-          this.showNav()
-          this.closed = true
-        }
-      }
+      this.$store.commit("menu")
     },
     showCreator() {
       this.closeMenu()
@@ -107,10 +74,11 @@ export default {
       })
     },
     showHome() {
-      this.closeMenu()
+       this.closeMenu()
       this.$router.push({
         path: '/',
       })
+
     },
   },
 }
@@ -166,9 +134,5 @@ export default {
   opacity: 0;
 }
 
-@media print {
-  #menu {
-    display: none;
-  }
-}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="navigation-group-page" class="bg-black/90" @mouseleave="closeMenu">
+  <div id="navigation-group-page" class="bg-black/90">
     <div id="navigation-group-container">
       <button
         @click="showCollection(item.title)"
@@ -21,7 +21,7 @@
         items-center
         justify-start
       "
-      @click="btnHandler"
+      @click="toogleSubMenu"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -41,10 +41,7 @@
 export default {
   name: 'AccessoiresSubNavigation',
   data: () => ({
-    collections: [],
-  }),
-  async fetch() {
-    this.collections = [
+    collections: [
       {
         id: '10001',
         title: 'Firefighter',
@@ -53,20 +50,16 @@ export default {
         id: '10002',
         title: 'Maritim',
       },
-    ]
+    ],
+  }),
+  async fetch() {
     //  this.collections = await fetch('https://api.andreasbenz.org/collection/').then(
     //  (res) => res.json()
     //)
   },
 
   props: {
-    btnHandler: {
-      type: Function,
-      required: true,
-      default: () => {},
-    },
-
-    showNav: {
+    toogleSubMenu: {
       type: Function,
       required: true,
       default: () => {},
@@ -74,13 +67,13 @@ export default {
   },
   methods: {
     showCollection(title) {
-      this.showNav()
+      this.$store.commit('menu')
       this.$router.push({
         path: '/collection/' + title,
       })
     },
     closeMenu() {
-      this.showNav()
+      this.$store.commit('menu')
     },
   },
 }

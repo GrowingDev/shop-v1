@@ -22,9 +22,13 @@
         <button class="mr-6" @click="openCart">
           <img id="cart-icon" src="~/assets/icons/cart.svg" alt="Cart" />
         </button>
-        <button @click="openMenu">
-          <img v-if="menu" src="~/assets/icons/menu-close.svg" alt="Menu" />
-          <img v-if="!menu" src="~/assets/icons/menu-white.png" alt="Menu" />
+        <button @click="toogleMenu">
+          <img
+            v-if="menu"
+            src="~/assets/icons/menu-close.svg"
+            alt="Menu"
+          />
+          <img v-else src="~/assets/icons/menu-white.png" alt="Menu" />
         </button>
       </div>
     </div>
@@ -33,23 +37,21 @@
 <script>
 export default {
   name: 'NavigationBar',
-
-  props: {
-    openMenu: {
-      type: Function,
-      required: true,
-      default: () => {},
-    },
-    menu: {
-      type: Boolean,
-      required: true,
-      default: () => false,
+  data() {
+    return {
+      open: false,
+    }
+  },
+  computed: {
+    menu() {
+      return this.$store.state.toogleMenu
     },
   },
   methods: {
-    showNav() {
-      this.nav = !this.nav
+    toogleMenu() {
+      this.$store.commit('menu')
     },
+
     openCart() {
       this.$router.push('/Cart')
     },

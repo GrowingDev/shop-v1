@@ -1,33 +1,27 @@
 <template>
   <div class="bg-primary-dark">
-
-   <navigation-bar :openMenu="this.openMenu" :menu="this.toogleMenu"/>
+    <navigation-bar />
     <nuxt-child />
+        <Menu  v-if="menu"/>
     <Footer />
-      <Menu v-if="toogleMenu" :show-nav="this.openMenu" />
+
   </div>
 </template>
 
 <script>
-import Footer from '~/components/Footer.vue';
-import NavigationBar from '~/components/NavigationBar.vue';
-import Menu from '~/components/menu/Menu.vue';
+import Footer from '~/components/Footer.vue'
+import NavigationBar from '~/components/NavigationBar.vue'
+import Menu from '~/components/menu/Menu.vue'
 
 export default {
-  data: () => {
-    return {
-      toogleMenu: false,
-    }
-  },
-  components:{
+  components: {
     NavigationBar,
     Footer,
-    Menu
+    Menu,
   },
-  methods: {
-    openMenu() {
-      this.toogleMenu = !this.toogleMenu;
-    console.log(this.toogleMenu)
+  computed: {
+    menu() {
+      return this.$store.state.toogleMenu
     },
   },
 }

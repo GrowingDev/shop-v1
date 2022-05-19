@@ -1,4 +1,5 @@
 export const state = () => ({
+  toogleMenu: false,
   product: {},
   collection: [],
   uploadFront: {
@@ -11,6 +12,10 @@ export const state = () => ({
 })
 
 export const mutations = {
+  menu(state) {
+    state.toogleMenu = !state.toogleMenu
+  },
+
   setCollection(state, collection) {
     state.collection = collection
   },
@@ -24,9 +29,7 @@ export const mutations = {
     state.product = product
   },
   setCartItem(state, cartItem) {
-
     state.cart.push(cartItem)
-
   },
   increaseCartItem(state, id) {
     state.cart.forEach((item) => {
