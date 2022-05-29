@@ -28,6 +28,11 @@
         >
           faq
         </button>
+               <button @click="showB2B"
+          class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
+        >
+          b2b
+        </button>
         <button
           class="menu-link md:text-md p-4 pl-4 lg:pl-8 uppercase text-left"
         >
@@ -77,6 +82,14 @@ export default {
        this.closeMenu()
       this.$router.push({
         path: '/',
+      })
+
+    },
+
+       showB2B() {
+       this.closeMenu()
+      this.$router.push({
+        path: '/business-terminal',
       })
 
     },
